@@ -2,6 +2,15 @@
   {{ partial "meta/main.html" . }}
   {{ hugo.Generator }}
 
+
+  {{/*  Styles  */}}
+
+  {{- $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint -}}
+  <link rel="preload" href="{{ $style.RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  {{- $code_syntax_highlight_css := resources.Get "code-highlight.css" | minify | fingerprint -}}
+  <link rel="preload" href="{{ $code_syntax_highlight_css.RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="/fonts/Roboto/roboto-v30-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+
   {{/*  <!-- Permalink & RSSlink -->  */}}
 
   <link rel="canonical" href="{{ .Permalink }}">
@@ -9,13 +18,6 @@
   <link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}">
   <link href="{{ .Permalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}">
   {{- end -}}
-
-  {{/*  Styles  */}}
-
-  {{- $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint -}}
-  <link href="{{ $style.RelPermalink }}" rel="stylesheet">
-  {{- $code_syntax_highlight_css := resources.Get "code-highlight.css" | minify | fingerprint -}}
-  <link href="{{ $code_syntax_highlight_css.RelPermalink }}" rel="stylesheet">
 
   {{/*  Favicons  */}}
 

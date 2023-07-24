@@ -1,0 +1,17 @@
+  /* Styling for the horizontal bubble-like containers */
+  .tag-container {
+    display: inline-block;
+    padding: 5px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    border: 1px solid rgba(128, 128, 128, 0.1);
+    background-color: rgba(128, 128, 128, 0.1);
+
+
+    color: #888a90 !important;
+    opacity: 0.8;
+    text-decoration: none;
+    &:hover {
+        opacity: 1;
+      }
+  }
